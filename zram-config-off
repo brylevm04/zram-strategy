@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+#ZRAM Config
+
+#ZRAM Swap
+swapoff /dev/zram0
+# /tmp on ZRAM
+swapoff /dev/zram1
+
+echo 0 > /sys/class/zram-control/hot_remove
+# Not required, but creating a blank uninitalzed drive
+# after removing one may be desired
+cat /sys/class/zram-control/hot_add
+
+
